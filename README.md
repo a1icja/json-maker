@@ -42,6 +42,22 @@ jsonMaker.addField('kek9', 'lul5');
 console.log(JSON.stringify(jsonMaker.json));
 ```
 
+### removeField(title)
+Returns: `null`
+
+`options`
+*  title : Title of JSON entry
+
+Allows you to delete a field based on the key title.
+
+```js
+const jsonMaker = require('json-maker');
+
+jsonMaker.removeField('kek9');
+
+console.log(JSON.stringify(jsonMaker.json));
+```
+
 ### write(file-name)
 Returns: `null`
 
@@ -58,6 +74,9 @@ jsonMaker.write('kek.json');
 
 ### exists(title)
 Returns: `true` or `false`
+
+`options`
+*  title : Title of JSON entry
 
 Returns a boolean depending on if the entry exists or not.
 
@@ -98,8 +117,6 @@ console.log(jsonMaker.search('title-here'));
 ```
 
 ## To-Do
-### removeField(title)
-Allows you to delete a field based on the key title.
 
 ### load(file)
 Would return the contents of the specified file. No extension by default.

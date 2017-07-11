@@ -9,6 +9,11 @@ module.exports = new function() {
         this.json[title] = data;
     };
 
+    this.removeField = function(title) {
+        if(!this.json[title]) return "Value doesn't exist";
+        delete this.json[title];
+    };
+
     this.exists = function(title) {
         if (this.json[title]) return true;
         else return false;
