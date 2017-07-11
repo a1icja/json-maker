@@ -9,10 +9,15 @@ module.exports = new function() {
         this.json[title] = data;
     };
 
+    this.exists = function(title) {
+        if (this.json[title]) return true;
+        else return false;
+    }
+
     this.write = function(toWrite) {
         fs.writeFile(`${path.dirname}/${toWrite}`, JSON.stringify(this.json)).catch(err => console.log(err));
     };
-    
+
     this.clear = function() {
         this.json = {};
     };
