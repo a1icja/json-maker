@@ -72,6 +72,9 @@ console.log(JSON.stringify(jsonMaker.json));
 ### search(title)
 Returns: `null` or `JSON field`
 
+`options`
+*  title : Key name of the JSON field
+
 Allows you to search the JSON object for a field based on the key title
 
 ```js
