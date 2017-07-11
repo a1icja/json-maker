@@ -4,11 +4,11 @@
 json-maker is an easy to use JSON making tool, with the ability to write JSON files and use the raw JSON object as a variable.
 
 ## Installation
-###NPM 5.0.0 or above:
+### NPM 5.0.0 or above:
 ```
 npm install json-maker
 ```
-###NPM 4.6.1 or below:
+### NPM 4.6.1 or below:
 ```
 npm install --save json-maker
 ```
@@ -87,7 +87,7 @@ console.log(jsonMaker.search('title-here'));
 ```
 
 ## To-Do
-### delete(title)
+### removeField(title)
 Allows you to delete a field based on the key title.
 
 ### exists(title)
@@ -102,5 +102,5 @@ Since this package will most likely become a class, it would be a part of the co
 ### load(file)
 Would return the contents of the specified file. No extension by default.
 
-##Make option for multiple fields with same key value
+### Make option for multiple fields with same key value
 Since this package will most likely become a class, it would be a part of the constructor.
