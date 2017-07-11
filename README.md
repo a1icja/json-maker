@@ -15,7 +15,7 @@ npm install --save json-maker
 
 ## API
 ### json
-Returns: `JSON Object`  
+Returns: `JSON Object`
 
 Returns the raw JSON Object that was created using addField()
 
@@ -26,9 +26,9 @@ console.log(JSON.stringify(jsonMaker.json));
 ```
 
 ### addField(title, data)
-Returns: `null`  
+Returns: `null`
 
-`options`  
+`options`
 *  title : Title of JSON entry
 *  data : Data to be associated with JSON title
 
@@ -38,6 +38,22 @@ Adds a field to the JSON object with the specified title and data values.
 const jsonMaker = require('json-maker');
 
 jsonMaker.addField('kek9', 'lul5');
+
+console.log(JSON.stringify(jsonMaker.json));
+```
+
+### removeField(title)
+Returns: `null`
+
+`options`
+*  title : Title of JSON entry
+
+Allows you to delete a field based on the key title.
+
+```js
+const jsonMaker = require('json-maker');
+
+jsonMaker.removeField('kek9');
 
 console.log(JSON.stringify(jsonMaker.json));
 ```
@@ -54,6 +70,20 @@ Writes the JSON object in the package to a the specified file in the working dir
 const jsonMaker = require('json-maker');
 
 jsonMaker.write('kek.json');
+```
+
+### exists(title)
+Returns: `true` or `false`
+
+`options`
+*  title : Title of JSON entry
+
+Returns a boolean depending on if the entry exists or not.
+
+```js
+const jsonMaker = require('json-maker');
+
+console.log(jsonMaker.exists('kek9'));
 ```
 
 ### clear()
@@ -87,20 +117,15 @@ console.log(jsonMaker.search('title-here'));
 ```
 
 ## To-Do
-### removeField(title)
-Allows you to delete a field based on the key title.
 
-### exists(title)
-Returns a boolean depending on if the entry exists or not.
+### load(file)
+Would return the contents of the specified file. No extension by default.
 
 ### Allow for extra JSON objects
 'Nuff said
 
 ### Make option to automatically stringify
 Since this package will most likely become a class, it would be a part of the constructor.
-
-### load(file)
-Would return the contents of the specified file. No extension by default.
 
 ### Make option for multiple fields with same key value
 Since this package will most likely become a class, it would be a part of the constructor.
