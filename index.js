@@ -28,6 +28,6 @@ module.exports = new function() {
     };
 
     this.search = function(title) {
-        return this.json[title];
+        return this.json[title] || null;
     };
 };
