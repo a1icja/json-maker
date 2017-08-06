@@ -28,8 +28,6 @@ module.exports = new function() {
     };
 
     this.search = function(title) {
-        if(this.json[title]) return this.json[title];
-        if(!this.json[title]) return null;
-        return "An error occurred.";
+        return this.json[title] || null;
     };
 };
