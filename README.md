@@ -26,7 +26,7 @@ console.log(JSON.stringify(jsonMaker.json));
 ```
 
 ### addField(title, data)
-Returns: `null`
+Returns: `Module`
 
 `options`
 *  title : Title of JSON entry
@@ -43,7 +43,7 @@ console.log(JSON.stringify(jsonMaker.json));
 ```
 
 ### removeField(title)
-Returns: `null`
+Returns: `Module`
 
 `options`
 *  title : Title of JSON entry
@@ -58,22 +58,38 @@ jsonMaker.removeField('kek9');
 console.log(JSON.stringify(jsonMaker.json));
 ```
 
-### write(file-name)
-Returns: `null`
+### write(file-path)
+Returns: `Promise`
 
 `options`
-*  file-name : Name of file to write to. Has no extension by default.
+*  file-path : Path and file to write to. Has no extension by default.
 
-Writes the JSON object in the package to a the specified file in the working directory. Uses JSON.stringify()
+Writes the JSON object in the package to a the specified file.
 
 ```js
 const jsonMaker = require('json-maker');
 
-jsonMaker.write('kek.json');
+jsonMaker.write('./kek.json').then(() => console.log('Wrote to file')).catch(err => console.error(err));
+```
+
+### load(file-path)
+Returns: `Promise`
+
+`options`
+*  file-path : Path and file to load from. Has no extension by default.
+
+Loads the JSON object from the file specified.
+
+```js
+const jsonMaker = require('json-maker');
+
+jsonMaker.load('./test.json').then(()=>{
+    console.log(JSON.stringify(jsonMaker.json));
+});
 ```
 
 ### exists(title)
-Returns: `true` or `false`
+Returns: `Boolean`
 
 `options`
 *  title : Title of JSON entry
@@ -99,27 +115,24 @@ jsonMaker.clear();
 console.log(JSON.stringify(jsonMaker.json));
 ```
 
-### search(title)
-Returns: `null` or `JSON field`
+### get(title)
+Returns: `null` or `Key Value`
 
 `options`
 *  title : Key name of the JSON field
 
-Allows you to search the JSON object for a field based on the key title
+Allows you to get the value of a key from the JSON object.
 
 ```js
 const jsonMaker = require('json-maker');
 
 jsonMaker.addField('title-here', 'value-here');
 
-console.log(jsonMaker.search('title-here'));
+console.log(jsonMaker.get('title-here'));
 
 ```
 
 ## To-Do
-
-### load(file)
-Would return the contents of the specified file. No extension by default.
 
 ### Allow for extra JSON objects
 'Nuff said
