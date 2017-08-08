@@ -1,6 +1,6 @@
 {
   "name": "json-maker",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Allows for easy creation of JSON files",
   "main": "index.js",
   "scripts": {
