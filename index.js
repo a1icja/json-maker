@@ -12,7 +12,7 @@ module.exports = new function () {
      * Add a field to JSON data.
      * @param  {string} title The title of the field.
      * @param  {object} data The data to store in this field. Can also be a string.
-     * @return {function}
+     * @return {Promise}
      */
     this.addField = function (title, data) {
         if (this.json[title]) return "Value already exists";
@@ -23,7 +23,7 @@ module.exports = new function () {
     /**
      * Remove a field to JSON data.
      * @param  {string} title The title of the field.
-     * @return {function}
+     * @return {Promise}
      */
     this.removeField = function (title) {
         if (!this.json[title]) return "Value doesn't exist";
@@ -34,7 +34,7 @@ module.exports = new function () {
     /**
      * Checks if a field exists in JSON data.
      * @param  {string} title The title of the field.
-     * @return {function}
+     * @return {boolean}
      */
     this.exists = function (title) {
         return !!this.json[title];
@@ -43,7 +43,7 @@ module.exports = new function () {
     /**
      * Writes the stored JSON data to a file.
      * @param  {string} toWrite The file to write JSON data to.
-     * @return {function}
+     * @return {Promise}
      */
     this.write = function (toWrite) {
         return fs.writeFile(toWrite, this.json);
@@ -64,7 +64,7 @@ module.exports = new function () {
     /**
      * Loads the JSON data from a file.
      * @param  {string} toLoad The file to load.
-     * @return {function}
+     * @return {Promise}
      */
     this.load = function (toLoad) {
         return new Promise((resolve, reject) => {
@@ -88,7 +88,7 @@ module.exports = new function () {
     /**
      * Gets a field from the JSON data.
      * @param  {string} title The title of the field.
-     * @return {function}
+     * @return {Key Value}
      */
     this.get = function (title) {
         return this.json[title] || null;
