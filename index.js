@@ -88,7 +88,7 @@ module.exports = new function () {
     /**
      * Gets a field from the JSON data.
      * @param  {string} title The title of the field.
-     * @return {(string|object|Array|number|boolean)}
+     * @return {(string|object|number|boolean)}
      */
     this.get = function (title) {
         return this.json[title] || null;
