@@ -11,7 +11,7 @@ module.exports = new function () {
     /**
      * Add a field to JSON data.
      * @param  {string} title The title of the field.
-     * @param  {object} data The data to store in this field. Can also be a string.
+     * @param  {object|string|number|boolean} data The data to store in this field.
      * @return {function}
      */
     this.addField = function (title, data) {
