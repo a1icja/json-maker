@@ -16,6 +16,7 @@ npm install --save json-maker
 ## Constructor
 ### load
 Optional: True
+
 Returns: `Nothing`
 
 `options`
