@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 
-module.exports = class {
+class JSONMaker {
      /**
       * @param  {string} [path] The file to load.
       */
@@ -97,3 +97,5 @@ module.exports = class {
         return this.json[title] || null;
     }
 }
+
+module.exports = JSONMaker;
