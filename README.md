@@ -13,6 +13,25 @@ npm install json-maker
 npm install --save json-maker
 ```
 
+## Constructor
+### load
+Optional: True
+Returns: `Nothing`
+
+`options`
+*  path : File to load on construction
+
+Loads a JSON file on construction into the native JSON storage. 
+
+```js
+const _jsonMaker = require('json-maker');
+const jsonMaker = new _jsonMaker('./kek9.json');
+
+setTimeout(() => {
+    console.log(JSON.stringify(jsonMaker.json));
+}, 1000);
+```
+
 ## API
 ### json
 Returns: `JSON Object`
@@ -20,7 +39,8 @@ Returns: `JSON Object`
 Returns the raw JSON Object that was created using addField()
 
 ```js
-const jsonMaker = require('json-maker');
+const _jsonMaker = require('json-maker');
+const jsonMaker = new _jsonMaker();
 
 console.log(JSON.stringify(jsonMaker.json));
 ```
@@ -35,7 +55,8 @@ Returns: `Module`
 Adds a field to the JSON object with the specified title and data values.
 
 ```js
-const jsonMaker = require('json-maker');
+const _jsonMaker = require('json-maker');
+const jsonMaker = new _jsonMaker();
 
 jsonMaker.addField('kek9', 'lul5');
 
@@ -51,7 +72,8 @@ Returns: `Module`
 Allows you to delete a field based on the key title.
 
 ```js
-const jsonMaker = require('json-maker');
+const _jsonMaker = require('json-maker');
+const jsonMaker = new _jsonMaker();
 
 jsonMaker.removeField('kek9');
 
@@ -67,7 +89,8 @@ Returns: `Promise`
 Writes the JSON object in the package to a the specified file.
 
 ```js
-const jsonMaker = require('json-maker');
+const _jsonMaker = require('json-maker');
+const jsonMaker = new _jsonMaker();
 
 jsonMaker.write('./kek.json').then(() => console.log('Wrote to file')).catch(err => console.error(err));
 ```
@@ -81,7 +104,8 @@ Returns: `Promise`
 Loads the JSON object from the file specified.
 
 ```js
-const jsonMaker = require('json-maker');
+const _jsonMaker = require('json-maker');
+const jsonMaker = new _jsonMaker();
 
 jsonMaker.load('./test.json').then(()=>{
     console.log(JSON.stringify(jsonMaker.json));
@@ -97,7 +121,8 @@ Returns: `Boolean`
 Returns a boolean depending on if the entry exists or not.
 
 ```js
-const jsonMaker = require('json-maker');
+const _jsonMaker = require('json-maker');
+const jsonMaker = new _jsonMaker();
 
 console.log(jsonMaker.exists('kek9'));
 ```
@@ -108,7 +133,8 @@ Returns: `null`
 Clears the JSON object in the package.
 
 ```js
-const jsonMaker = require('json-maker');
+const _jsonMaker = require('json-maker');
+const jsonMaker = new _jsonMaker();
 
 jsonMaker.clear();
 
@@ -124,7 +150,8 @@ Returns: `null` or `Key Value`
 Allows you to get the value of a key from the JSON object.
 
 ```js
-const jsonMaker = require('json-maker');
+const _jsonMaker = require('json-maker');
+const jsonMaker = new _jsonMaker();
 
 jsonMaker.addField('title-here', 'value-here');
 
