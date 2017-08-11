@@ -1,55 +1,58 @@
 const path = require('path');
 const fs = require('fs-extra');
 
-module.exports = new function () {
-    /**
-     * JSON data.
-     * @type {Object}
-     */
-    this.json = {};
-
-    /**
-     * Add a field to JSON data.
-     * @param  {string} title The title of the field.
-     * @param  {object|string|number|boolean} data The data to store in this field.
-     * @return {function}
-     */
-    this.addField = function (title, data) {
+module.exports = class {
+     /**
+      * @param  {string} [path] The file to load.
+      */
+    constructor(path) {
+        this.json = {};
+        
+        if (path) this.load(path);
+    }
+    
+     /**
+      * Add a field to JSON data.
+      * @param  {string} title The title of the field.
+      * @param  {object|string|number|boolean} data The data to store in this field.
+      * @return {JSONMaker} This JSON Maker.
+      */
+    addField(title, data) {
         if (this.json[title]) return "Value already exists";
         this.json[title] = data;
         return this;
-    };
+    }
 
     /**
      * Remove a field to JSON data.
      * @param  {string} title The title of the field.
-     * @return {function}
+     * @return {JSONMaker} This JSON Maker.
      */
-    this.removeField = function (title) {
+    removeField(title) {
         if (!this.json[title]) return "Value doesn't exist";
         delete this.json[title];
         return this;
-    };
+    }
 
     /**
      * Checks if a field exists in JSON data.
      * @param  {string} title The title of the field.
      * @return {boolean}
      */
-    this.exists = function (title) {
+    exists(title) {
         return !!this.json[title];
-    };
+    }
 
     /**
      * Writes the stored JSON data to a file.
-     * @param  {string} toWrite The file to write JSON data to.
+     * @param  {string} path The file to write JSON data to.
      * @return {Promise}
      */
-    this.write = function (toWrite) {
-        return fs.writeFile(toWrite, this.json);
-    };
+    write(path) {
+        return fs.writeFile(path, this.json);
+    }
 
-    this._verifyJSON = function (data) {
+    _verifyJSON(data) {
         return new Promise((resolve, reject) => {
             try {
                 JSON.parse(data);
@@ -59,16 +62,16 @@ module.exports = new function () {
                 return reject(e);
             }
         });
-    };
+    }
 
     /**
      * Loads the JSON data from a file.
-     * @param  {string} toLoad The file to load.
+     * @param  {string} path The file to load.
      * @return {Promise}
      */
-    this.load = function (toLoad) {
+    load(path) {
         return new Promise((resolve, reject) => {
-            fs.readFile(toLoad, 'utf8', (err, data) => {
+            fs.readFile(path, 'utf8', (err, data) => {
                 if (err) return reject(err);
                 this._verifyJSON(data).then(() => {
                     this.json = JSON.parse(data);
@@ -76,12 +79,12 @@ module.exports = new function () {
                 }).catch(err2 => reject(err2));
             });
         });
-    };
+    }
 
     /**
      * Clears JSON data.
      */
-    this.clear = function () {
+    clear() {
         this.json = {};
     };
 
@@ -90,7 +93,7 @@ module.exports = new function () {
      * @param  {string} title The title of the field.
      * @return {(string|object|number|boolean)}
      */
-    this.get = function (title) {
+    get(title) {
         return this.json[title] || null;
-    };
-};
+    }
+}
