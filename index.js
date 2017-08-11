@@ -49,7 +49,7 @@ module.exports = class {
      * @return {Promise}
      */
     write(path) {
-        return fs.writeFile(path, this.json);
+        return fs.writeFile(path, JSON.stringify(this.json, null, 4));
     }
 
     _verifyJSON(data) {
