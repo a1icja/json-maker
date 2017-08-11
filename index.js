@@ -15,7 +15,7 @@ module.exports = class {
       * Add a field to JSON data.
       * @param  {string} title The title of the field.
       * @param  {object|string|number|boolean} data The data to store in this field.
-      * @return {JSONMaker} This module.
+      * @return {JSONMaker} This JSON Maker.
       */
     addField(title, data) {
         if (this.json[title]) return "Value already exists";
@@ -26,7 +26,7 @@ module.exports = class {
     /**
      * Remove a field to JSON data.
      * @param  {string} title The title of the field.
-     * @return {JSONMaker} This module.
+     * @return {JSONMaker} This JSON Maker.
      */
     removeField(title) {
         if (!this.json[title]) return "Value doesn't exist";
